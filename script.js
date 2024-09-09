@@ -15,10 +15,10 @@ const флаг = "M8C{W3_4TT4ck_W3_PR0T3ct}";
 const encryptedFlag = base64Encode(флаг);
 document.getElementById('encrypted-flag').textContent = encryptedFlag;
 document.getElementById('submit-button').addEventListener('click', () => {
-    const up = document.getElementById('user-input').value.trim();
+    const вверх = document.getElementById('user-input').value.trim();
     const resultMessage = document.getElementById('result-message');
     
-    if (up === флаг) {
+    if (вверх === флаг) {
         resultMessage.textContent = '8SzwQc8j2KJZc6BZreasntNwoULF3G3PLMMyRoZ34nNwxHcfgM4x4wgwyvY5f6W2UUxYgo4igwZzcdwPb98agKqFdQ6F2hfmGQ3E33TjzJREfhao72N';
     } else {
         resultMessage.textContent = 'C3TZR1g81UNaYd8W4kacDU5psjQn3qmk19qnbcPzuTqWvjQoPF3hguZxaqWZ9vfhrQxRiqwAGXrcvDSvYsVpq1XNLHqzHDfMXUwCFCQYoXiqJAzXxr5SLQ2';
