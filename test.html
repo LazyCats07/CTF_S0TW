@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capture The Flag - Crypto Challenge</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 100px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .game-description {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        .encrypted-flag {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            width: 80%;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result-message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .correct {
+            color: green;
+        }
+        .wrong {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Capture The Flag</h1>
+        <p class="game-description">Welcome to the Crypto Challenge! Decrypt the flag and submit your answer.</p>
+        <div class="encrypted-flag" id="encrypted-flag"></div>
+        <input type="text" id="user-input" placeholder="Enter decrypted flag here">
+        <br>
+        <button id="submit-button">Submit</button>
+        <p class="result-message" id="result-message"></p>
+    </div>
+
+    <script>
+        // Base64 encode and decode functions
+        function base64Encode(text) {
+            return btoa(text);
+        }
+
+        function base64Decode(encoded) {
+            try {
+                return atob(encoded);
+            } catch (e) {
+                return null;
+            }
+        }
+
+        // Flag that needs to be captured
+        const flag = "CTF{CryptoIsFun!}";
+
+        // Encrypt the flag using Base64
+        const encryptedFlag = base64Encode(flag);
+
+        // Display the encrypted flag on the page
+        document.getElementById('encrypted-flag').textContent = encryptedFlag;
+
+        // Game logic
+        document.getElementById('submit-button').addEventListener('click', () => {
+            const userInput = document.getElementById('user-input').value.trim();
+            const resultMessage = document.getElementById('result-message');
+            
+            if (userInput === flag) {
+                resultMessage.textContent = 'Correct! You have captured the flag!';
+            } else {
+                resultMessage.textContent = 'Wrong flag, try again!';
+            }
+        });
+    </script>
+</body>
+</html>
